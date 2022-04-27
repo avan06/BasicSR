@@ -13,5 +13,5 @@ torch>=2.0.0
 torchvision
 tqdm
 yapf
-timm   # For dat_arch.py
-einops # For dat_arch.py
+timm   # For dat_arch
+einops # For dat_arch & hat_arch
