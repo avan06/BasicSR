@@ -1,3 +1,5 @@
+.DS_Store
+
 # ignored folders
 datasets/*
 experiments/*
@@ -5,6 +7,8 @@ results/*
 tb_logger/*
 wandb/*
 tmp/*
+visual/*
+.vs
 
 docs/api
 scripts/__init__.py

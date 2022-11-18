@@ -9,7 +9,9 @@ requests
 scikit-image
 scipy
 tb-nightly
-torch>=1.7
+torch>=2.0.0
 torchvision
 tqdm
 yapf
+timm   # For dat_arch.py
+einops # For dat_arch.py
