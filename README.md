@@ -3,11 +3,12 @@
 </p>
 
 ## This forked version has merged the repository from the following source.
-### [Dual Aggregation Transformer for Image Super-Resolution](https://github.com/zhengchen1999/DAT) by. zhengchen1999.
-### [Hybrid Attention Transformer for Image Restoration](https://github.com/XPixelGroup/HAT) by. XPixelGroup.
-### [Partial Large Kernel CNNs for Efficient Super-Resolution](https://github.com/dslisleedh/PLKSR) by. dslisleedh.
-### [Making PLKSR stable for real-world SISR](https://github.com/dslisleedh/PLKSR/issues/4) by. neosr-project.
+### [DAT: Dual Aggregation Transformer for Image Super-Resolution](https://github.com/zhengchen1999/DAT) by. zhengchen1999.
+### [HAT: Hybrid Attention Transformer for Image Restoration](https://github.com/XPixelGroup/HAT) by. XPixelGroup.
+### [PLKSR: Partial Large Kernel CNNs for Efficient Super-Resolution](https://github.com/dslisleedh/PLKSR) by. dslisleedh.
+### [RealPLKSR: Making PLKSR stable for real-world SISR](https://github.com/dslisleedh/PLKSR/issues/4) by. neosr-project.
 ### [DRCT: Saving Image Super-resolution away from Information Bottleneck](https://github.com/ming053l/DRCT) by. ming053l.
+### [ATD: Adaptive Token Dictionary](https://github.com/LabShuHangGU/Adaptive-Token-Dictionary) by. LabShuHangGU.
 
 ---
 

@@ -17,3 +17,4 @@ timm       # For dat_arch & PLKSR
 einops     # For dat_arch & hat_arch & PLKSR
 fvcore     # For PLKSR
 matplotlib # For PLKSR
+fairscale  # For ATD

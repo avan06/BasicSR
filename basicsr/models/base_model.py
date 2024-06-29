@@ -14,6 +14,7 @@ class BaseModel():
     """Base model."""
 
     def __init__(self, opt):
+        self.net_g = None
         self.opt = opt
         self.device = torch.device('cuda' if opt['num_gpu'] != 0 else 'cpu')
         self.is_train = opt['is_train']
@@ -129,6 +130,9 @@ class BaseModel():
         elif scheduler_type == 'CosineAnnealingRestartLR':
             for optimizer in self.optimizers:
                 self.schedulers.append(lr_scheduler.CosineAnnealingRestartLR(optimizer, **train_opt['scheduler']))
+        elif scheduler_type == 'TrueCosineAnnealingLR':
+            for optimizer in self.optimizers:
+                self.schedulers.append(torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, **train_opt['scheduler']))
         else:
             raise NotImplementedError(f'Scheduler {scheduler_type} is not implemented yet.')
 
@@ -183,8 +187,8 @@ class BaseModel():
 
         Args:
             current_iter (int): Current iteration.
-            warmup_iter (int)： Warm-up iter numbers. -1 for no warm-up.
-                Default： -1.
+            warmup_iter (int): Warm-up iter numbers. -1 for no warm-up.
+                Default: -1.
         """
         if current_iter > 1:
             for scheduler in self.schedulers:
