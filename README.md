@@ -10,6 +10,7 @@
 ### [DRCT: Saving Image Super-resolution away from Information Bottleneck](https://github.com/ming053l/DRCT) by. ming053l.
 ### [ATD: Adaptive Token Dictionary](https://github.com/LabShuHangGU/Adaptive-Token-Dictionary) by. LabShuHangGU.
 ### [MoSR: Mamba Out Super Resolution](https://github.com/umzi2/MoSR) by. umzi2
+### [SRFormer: Permuted Self-Attention for Single Image Super-Resolution1](https://github.com/HVision-NKU/SRFormer) by. HVision-NKU
 ---
 
 ## <div align="center"><b><a href="README.md">English</a> | <a href="README_CN.md">简体中文</a></b></div>
