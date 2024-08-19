@@ -2,7 +2,10 @@
   <img src="assets/basicsr_xpixel_logo.png" height=120>
 </p>
 
-## This forked version has merged the code from "[Dual Aggregation Transformer for Image Super-Resolution](https://github.com/zhengchen1999/DAT)."
+## This forked version has merged the repository from the following source.
+### [Dual Aggregation Transformer for Image Super-Resolution](https://github.com/zhengchen1999/DAT) by. zhengchen1999.
+### [Hybrid Attention Transformer for Image Restoration](https://github.com/XPixelGroup/HAT) by. XPixelGroup.
+### [Partial Large Kernel CNNs for Efficient Super-Resolution](https://github.com/dslisleedh/PLKSR) by. dslisleedh.
 
 ## <div align="center"><b><a href="README.md">English</a> | <a href="README_CN.md">简体中文</a></b></div>
 

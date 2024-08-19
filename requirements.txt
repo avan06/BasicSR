@@ -13,5 +13,7 @@ torch>=2.0.0
 torchvision
 tqdm
 yapf
-timm   # For dat_arch
-einops # For dat_arch & hat_arch
+timm       # For dat_arch & PLKSR
+einops     # For dat_arch & hat_arch & PLKSR
+fvcore     # For PLKSR
+matplotlib # For PLKSR
