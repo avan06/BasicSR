@@ -9,7 +9,7 @@
 ### [RealPLKSR: Making PLKSR stable for real-world SISR](https://github.com/dslisleedh/PLKSR/issues/4) by. neosr-project.
 ### [DRCT: Saving Image Super-resolution away from Information Bottleneck](https://github.com/ming053l/DRCT) by. ming053l.
 ### [ATD: Adaptive Token Dictionary](https://github.com/LabShuHangGU/Adaptive-Token-Dictionary) by. LabShuHangGU.
-
+### [MoSR: Mamba Out Super Resolution](https://github.com/umzi2/MoSR) by. umzi2
 ---
 
 ## <div align="center"><b><a href="README.md">English</a> | <a href="README_CN.md">简体中文</a></b></div>
