@@ -7,6 +7,7 @@
 ### [Hybrid Attention Transformer for Image Restoration](https://github.com/XPixelGroup/HAT) by. XPixelGroup.
 ### [Partial Large Kernel CNNs for Efficient Super-Resolution](https://github.com/dslisleedh/PLKSR) by. dslisleedh.
 ### [Making PLKSR stable for real-world SISR](https://github.com/dslisleedh/PLKSR/issues/4) by. neosr-project.
+### [DRCT: Saving Image Super-resolution away from Information Bottleneck](https://github.com/ming053l/DRCT) by. ming053l.
 
 ---
 

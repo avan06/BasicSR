@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.utils.checkpoint as checkpoint
 
 from basicsr.utils.registry import ARCH_REGISTRY
-from basicsr.archs.arch_util import to_2tuple, trunc_normal_
+from basicsr.archs.arch_util import to_2tuple, trunc_normal_, pad_to_multiple
 
 from einops import rearrange
 
@@ -968,31 +968,8 @@ class HAT(nn.Module):
 
         return x
 
-    def pad_to_multiple(self, img, multiple):
-        """
-        Pads the input image tensor so that its height and width are multiples of the given value.
-
-        Args:
-            img (Tensor): The input image tensor of shape (N, C, H, W), where
-                          N = batch size, C = number of channels, H = height, W = width.
-            multiple (int): The multiple to which the height and width should be aligned.
-
-        Returns:
-            Tuple[Tensor, int, int]: 
-                - The padded image tensor with height and width adjusted to the nearest multiple.
-                - The amount of padding added to the height.
-                - The amount of padding added to the width.
-        """
-        _, _, h, w = img.shape
-        pad_h = (multiple - h % multiple) % multiple
-        pad_w = (multiple - w % multiple) % multiple
-    
-        # Padding on the left, right, top, bottom.
-        img_padded = nn.functional.pad(img, (0, pad_w, 0, pad_h), mode="reflect")
-        return img_padded, pad_h, pad_w
-
     def forward(self, x):
-        x, pad_h, pad_w = self.pad_to_multiple(x, self.window_size)
+        x, pad_h, pad_w = pad_to_multiple(x, self.window_size)
         self.mean = self.mean.type_as(x)
         x = (x - self.mean) * self.img_range
 
@@ -1005,4 +982,4 @@ class HAT(nn.Module):
 
         x = x / self.img_range + self.mean
 
-        return x[:, :, :-pad_h * self.upscale, :-pad_w * self.upscale]
+        return x[:, :, : -pad_h * self.upscale if pad_h > 0 else None, : -pad_w * self.upscale if pad_w > 0 else None]

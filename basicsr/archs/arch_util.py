@@ -317,6 +317,31 @@ to_4tuple = _ntuple(4)
 to_ntuple = _ntuple
 
 
+# Required for HAT, DRCT arch
+def pad_to_multiple(img, multiple):
+    """
+    Pads the input image tensor so that its height and width are multiples of the given value.
+
+    Args:
+        img (Tensor): The input image tensor of shape (N, C, H, W), where
+                      N = batch size, C = number of channels, H = height, W = width.
+        multiple (int): The multiple to which the height and width should be aligned.
+
+    Returns:
+        Tuple[Tensor, int, int]: 
+            - The padded image tensor with height and width adjusted to the nearest multiple.
+            - The amount of padding added to the height.
+            - The amount of padding added to the width.
+    """
+    _, _, h, w = img.shape
+    pad_h = (multiple - h % multiple) % multiple
+    pad_w = (multiple - w % multiple) % multiple
+
+    # Padding on the left, right, top, bottom.
+    img_padded = nn.functional.pad(img, (0, pad_w, 0, pad_h), mode="reflect")
+    return img_padded, pad_h, pad_w
+
+
 # Required for RealPLKSR, sourced from the neosr-project.
 class DySample(nn.Module):
     """Adapted from 'Learning to Upsample by Learning to Sample':
