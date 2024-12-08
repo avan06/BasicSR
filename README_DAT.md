@@ -14,14 +14,14 @@
 
 > **Abstract:** *Transformer has recently gained considerable popularity in low-level vision tasks, including image super-resolution (SR). These networks utilize self-attention along different dimensions, spatial or channel, and achieve impressive performance. This inspires us to combine the two dimensions in Transformer for a more powerful representation capability. Based on the above idea, we propose a novel Transformer model, Dual Aggregation Transformer (DAT), for image SR. Our DAT aggregates features across spatial and channel dimensions, in the inter-block and intra-block dual manner. Specifically, we alternately apply spatial and channel self-attention in consecutive Transformer blocks. The alternate strategy enables DAT to capture the global context and realize inter-block feature aggregation. Furthermore, we propose the adaptive interaction module (AIM) and the spatial-gate feed-forward network (SGFN) to achieve intra-block feature aggregation. AIM complements two self-attention mechanisms from corresponding dimensions. Meanwhile, SGFN introduces additional non-linear spatial information in the feed-forward network. Extensive experiments show that our DAT surpasses current methods.* 
 
-![](figs/DAT.png)
+![](assets/figs/DAT.png)
 
 ---
 
 |                      HR                      |                        LR                         | [SwinIR](https://github.com/JingyunLiang/SwinIR) |  [CAT](https://github.com/zhengchen1999/CAT)  |                  DAT (ours)                   |
 | :------------------------------------------: | :-----------------------------------------------: | :----------------------------------------------: | :-------------------------------------------: | :-------------------------------------------: |
-| <img src="figs/img_059_HR_x4.png" height=80> | <img src="figs/img_059_Bicubic_x4.png" height=80> | <img src="figs/img_059_SwinIR_x4.png" height=80> | <img src="figs/img_059_CAT_x4.png" height=80> | <img src="figs/img_059_DAT_x4.png" height=80> |
-| <img src="figs/img_049_HR_x4.png" height=80> | <img src="figs/img_049_Bicubic_x4.png" height=80> | <img src="figs/img_049_SwinIR_x4.png" height=80> | <img src="figs/img_049_CAT_x4.png" height=80> | <img src="figs/img_049_DAT_x4.png" height=80> |
+| <img src="assets/figs/img_059_HR_x4.png" height=80> | <img src="assets/figs/img_059_Bicubic_x4.png" height=80> | <img src="assets/figs/img_059_SwinIR_x4.png" height=80> | <img src="assets/figs/img_059_CAT_x4.png" height=80> | <img src="assets/figs/img_059_DAT_x4.png" height=80> |
+| <img src="assets/figs/img_049_HR_x4.png" height=80> | <img src="assets/figs/img_049_Bicubic_x4.png" height=80> | <img src="assets/figs/img_049_SwinIR_x4.png" height=80> | <img src="assets/figs/img_049_CAT_x4.png" height=80> | <img src="assets/figs/img_049_DAT_x4.png" height=80> |
 
 ## Dependencies
 
@@ -173,21 +173,21 @@ We achieve state-of-the-art performance. Detailed results can be found in the pa
 - results in Table 2 of the main paper
 
 <p align="center">
-  <img width="900" src="figs/Table-1.png">
+  <img width="900" src="assets/figs/Table-1.png">
 </p>
 
 
 - results in Table 1 of the supplementary material
 
 <p align="center">
-  <img width="900" src="figs/Table-2.png">
+  <img width="900" src="assets/figs/Table-2.png">
 </p>
 
 
 - results in Table 2 of the supplementary material
 
 <p align="center">
-  <img width="900" src="figs/Table-3.png">
+  <img width="900" src="assets/figs/Table-3.png">
 </p>
 
 
@@ -196,17 +196,17 @@ We achieve state-of-the-art performance. Detailed results can be found in the pa
 - visual comparison (x4) in the main paper
 
 <p align="center">
-  <img width="900" src="figs/Figure-1.png">
+  <img width="900" src="assets/figs/Figure-1.png">
 </p>
 
 
 - visual comparison (x4) in the supplementary material
 
 <p align="center">
-  <img width="900" src="figs/Figure-2.png">
-  <img width="900" src="figs/Figure-3.png">
-  <img width="900" src="figs/Figure-4.png">
-  <img width="900" src="figs/Figure-5.png">
+  <img width="900" src="assets/figs/Figure-2.png">
+  <img width="900" src="assets/figs/Figure-3.png">
+  <img width="900" src="assets/figs/Figure-4.png">
+  <img width="900" src="assets/figs/Figure-5.png">
 </p>
 </details>
 

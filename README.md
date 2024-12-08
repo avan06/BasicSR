@@ -2,6 +2,8 @@
   <img src="assets/basicsr_xpixel_logo.png" height=120>
 </p>
 
+## This forked version has merged the code from "[Dual Aggregation Transformer for Image Super-Resolution](https://github.com/zhengchen1999/DAT)."
+
 ## <div align="center"><b><a href="README.md">English</a> | <a href="README_CN.md">简体中文</a></b></div>
 
 <div align="center">
