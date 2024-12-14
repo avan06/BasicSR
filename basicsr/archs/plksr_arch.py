@@ -323,6 +323,26 @@ class PLKSR(nn.Module):
         # Mobile Convert options
         is_coreml: bool = False,
     ):
+        """
+        PLKSR: A super-resolution neural network architecture that combines various components
+        for effective upscaling of low-resolution images.
+
+        Args:
+            dim (int): The number of feature channels for the convolutional layers.
+            n_blocks (int): The number of PLKBlocks in the feature extraction module.
+            upscaling_factor (int): The factor by which the resolution will be increased.
+            ccm_type (Literal['CCM', 'ICCM', 'DCCM']): Type of Convolutional Channel Mixer to use.
+            kernel_size (int): The size of the kernel for large kernel convolutions.
+            split_ratio (float): Ratio of features allocated to large kernel convolutions.
+            lk_type (Literal['PLK', 'SparsePLK', 'RectSparsePLK']):
+                Type of large kernel convolution to use ('PLK', 'SparsePLK', or 'RectSparsePLK').
+            use_max_kernel (bool): Whether to include the maximum kernel size in sparse convolutions.
+            sparse_kernels (Sequence[int]): Kernel sizes for sparse convolutions.
+            sparse_dilations (Sequence[int]): Dilation rates for sparse convolutions.
+            with_idt (bool): Whether to include identity mapping in convolutions.
+            use_ea (bool): Whether to include Element-wise Attention.
+            is_coreml (bool): Whether the model is optimized for CoreML compatibility.
+        """
         super().__init__()
         
         self.feats = nn.Sequential(*[
@@ -369,7 +389,7 @@ if __name__ == '__main__':
     """ Initialize """
     # from fvcore.nn import flop_count_table, FlopCountAnalysis, ActivationCountAnalysis    
     import numpy as np
-    from scripts.test_direct_metrics import test_direct_metrics
+    from scripts.PLKSR.test_direct_metrics import test_direct_metrics
     
     test_size = 'HD'
     # test_size = 'FHD'

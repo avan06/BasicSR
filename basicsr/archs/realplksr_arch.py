@@ -5,10 +5,8 @@ import torch
 from torch import nn
 from torch.nn.init import trunc_normal_
 
-from neosr.archs.arch_util import DySample, net_opt
-from neosr.utils.registry import ARCH_REGISTRY
-
-upscale, __ = net_opt()
+from basicsr.archs.arch_util import DySample
+from basicsr.utils.registry import ARCH_REGISTRY
 
 
 class DCCM(nn.Sequential):
@@ -103,15 +101,31 @@ class PLKBlock(nn.Module):
 class realplksr(nn.Module):
     """Partial Large Kernel CNNs for Efficient Super-Resolution:
     https://arxiv.org/abs/2404.11848
+
+    Making PLKSR stable for real-world SISR by. neosr-project
+    https://github.com/dslisleedh/PLKSR/issues/4
+    
+    Args:
+        upscaling_factor (int): Upscaling factor for resolution enhancement.
+        in_ch (int): Number of input channels (default: 3, for RGB images).
+        out_ch (int): Number of output channels (default: 3, for RGB images).
+        dim (int): Number of features in convolutional layers (default: 64).
+        n_blocks (int): Number of PLK blocks (default: 28).
+        kernel_size (int): Kernel size for PLK convolutional layers (default: 17).
+        split_ratio (float): Ratio of feature channels for PLK processing (default: 0.25).
+        use_ea (bool): Whether to use element-wise attention (default: True).
+        norm_groups (int): Number of groups for group normalization (default: 4).
+        dropout (float): Dropout rate for regularization (default: 0).
+        dysample (bool): Whether to use DySample for upscaling (default: False).
     """
 
     def __init__(
         self,
+        upscaling_factor: int,
         in_ch: int = 3,
         out_ch: int = 3,
         dim: int = 64,
         n_blocks: int = 28,
-        upscaling_factor: int = upscale,
         kernel_size: int = 17,
         split_ratio: float = 0.25,
         use_ea: bool = True,
