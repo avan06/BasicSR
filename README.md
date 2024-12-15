@@ -8,6 +8,8 @@
 ### [Partial Large Kernel CNNs for Efficient Super-Resolution](https://github.com/dslisleedh/PLKSR) by. dslisleedh.
 ### [Making PLKSR stable for real-world SISR](https://github.com/dslisleedh/PLKSR/issues/4) by. neosr-project.
 
+---
+
 ## <div align="center"><b><a href="README.md">English</a> | <a href="README_CN.md">简体中文</a></b></div>
 
 <div align="center">

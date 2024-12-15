@@ -1,9 +1,11 @@
 # modify from https://github.com/rosinality/stylegan2-pytorch/blob/master/op/fused_act.py # noqa:E501
 
 import os
+import platform
 import torch
 from torch import nn
 from torch.autograd import Function
+from torch.nn import functional as F
 
 BASICSR_JIT = os.getenv('BASICSR_JIT')
 if BASICSR_JIT == 'True':
@@ -52,7 +54,7 @@ class FusedLeakyReLUFunctionBackward(Function):
     def backward(ctx, gradgrad_input, gradgrad_bias):
         out, = ctx.saved_tensors
         gradgrad_out = fused_act_ext.fused_bias_act(gradgrad_input, gradgrad_bias, out, 3, 1, ctx.negative_slope,
-                                                    ctx.scale)
+                                                   ctx.scale)
 
         return gradgrad_out, None, None, None
 
@@ -80,7 +82,7 @@ class FusedLeakyReLUFunction(Function):
 
 class FusedLeakyReLU(nn.Module):
 
-    def __init__(self, channel, negative_slope=0.2, scale=2**0.5):
+    def __init__(self, channel, negative_slope=0.2, scale=2 ** 0.5):
         super().__init__()
 
         self.bias = nn.Parameter(torch.zeros(channel))
@@ -91,5 +93,8 @@ class FusedLeakyReLU(nn.Module):
         return fused_leaky_relu(input, self.bias, self.negative_slope, self.scale)
 
 
-def fused_leaky_relu(input, bias, negative_slope=0.2, scale=2**0.5):
-    return FusedLeakyReLUFunction.apply(input, bias, negative_slope, scale)
+def fused_leaky_relu(input, bias, negative_slope=0.2, scale=2 ** 0.5):
+    if platform.system() != 'Linux' or not torch.cuda.is_available() or input.device.type == 'cpu':
+        return scale * F.leaky_relu(input + bias.view((1, -1) + (1,) * (len(input.shape) - 2)), negative_slope=negative_slope)
+    else:
+        return FusedLeakyReLUFunction.apply(input, bias, negative_slope, scale)
