@@ -94,7 +94,7 @@ class FusedLeakyReLU(nn.Module):
 
 
 def fused_leaky_relu(input, bias, negative_slope=0.2, scale=2 ** 0.5):
-    if platform.system() != 'Linux' or not torch.cuda.is_available() or input.device.type == 'cpu':
+    if not torch.cuda.is_available() or input.device.type == "cpu" or "fused_act_ext" not in globals():
         return scale * F.leaky_relu(input + bias.view((1, -1) + (1,) * (len(input.shape) - 2)), negative_slope=negative_slope)
     else:
         return FusedLeakyReLUFunction.apply(input, bias, negative_slope, scale)
