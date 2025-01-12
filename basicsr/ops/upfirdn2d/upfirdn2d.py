@@ -152,7 +152,7 @@ class UpFirDn2d(Function):
 
 
 def upfirdn2d(input, kernel, up=1, down=1, pad=(0, 0)):
-    if platform.system() != 'Linux' or not torch.cuda.is_available() or input.device.type == 'cpu':
+    if not torch.cuda.is_available() or input.device.type == "cpu" or "upfirdn2d_ext" not in globals():
         out = upfirdn2d_native(input, kernel, up, up, down, down, pad[0], pad[1], pad[0], pad[1])
     else:
         out = UpFirDn2d.apply(input, kernel, (up, up), (down, down), (pad[0], pad[1], pad[0], pad[1]))
