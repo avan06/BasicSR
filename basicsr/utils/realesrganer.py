@@ -280,11 +280,12 @@ class RealESRGANer():
             output = (output_img * 255.0).round().astype(np.uint8)
 
         if outscale is not None and outscale != float(self.scale):
+            interpolation = cv2.INTER_AREA if outscale < float(self.scale) else cv2.INTER_LANCZOS4
             output = cv2.resize(
                 output, (
                     int(w_input * outscale),
                     int(h_input * outscale),
-                ), interpolation=cv2.INTER_LANCZOS4)
+                ), interpolation=interpolation)
 
         return output, img_mode
 
