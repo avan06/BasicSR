@@ -9,6 +9,7 @@ import queue
 import threading
 import torch
 import safetensors
+import time
 from basicsr.utils.download_util import load_file_from_url
 from torch.nn import functional as F
 
@@ -245,6 +246,16 @@ class RealESRGANer():
             else:
                 self.process()
             output_img = self.post_process()
+            # To avoid the issue where CUDA encounters the error add a sleep as recommended.
+            # File "realesrganer.py", in enhance
+            #   output_img = output_img.data.squeeze().float().cpu().clamp_(0, 1).numpy()
+            # RuntimeError: CUDA error: an illegal memory access was encountered
+            # CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+            # For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+            # Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+            # https://blog.csdn.net/yyywxk/article/details/132773782
+            if torch.cuda.is_available():
+                time.sleep(0.1)
 
         output_img = output_img.data.squeeze().float().cpu().clamp_(0, 1).numpy()
         output_img = np.transpose(output_img[[2, 1, 0], :, :], (1, 2, 0))
